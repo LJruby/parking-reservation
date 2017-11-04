@@ -1,0 +1,31 @@
+<%= form_with(model: reservation, local: true) do |form| %>
+  <% if reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2>Formularz jest smutny, pocieszysz? :)</h2>
+      <ul>
+      <% reservation.errors.messages.each do |message| %>
+        <li><%= message[1][0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :"Twoje imię, autko, telefon, itp" %>
+    <%= form.text_area :name, id: :reservation_name %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :Od %>
+    <%= form.date_select :from, :start_year => Date.today.year, id: :reservation_from %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Do %>
+    <%= form.date_select :to, :start_year => Date.today.year, id: :reservation_to %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Zapisz" %>
+  </div>
+<% end %>

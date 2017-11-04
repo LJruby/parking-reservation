@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  from: 2017-10-31
+  to: 2017-10-31
+  historical: false
+
+two:
+  name: MyText
+  from: 2017-10-31
+  to: 2017-10-31
+  historical: false

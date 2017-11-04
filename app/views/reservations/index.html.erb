@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+<h1>Kto pierwszy, ten lepszy!</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Aktualnie miejsca zajmują: (6 miejsc max)</th>
+      <th>Od</th>
+      <th>Do</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<% @reservations.each do |r| %>
+<% if (r.from<=Date.today) && (r.to>=Date.today) %>
+  <tbody>
+      <tr>
+        <td><%= r.name %></td>
+        <td><%= r.from %></td>
+        <td><%= r.to %></td>
+      </tr>
+  </tbody>
+<% end %>
+<% end %>
+</table>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Przyszłe rezerwacje:</th>
+      <th>Od</th>
+      <th>Do</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<% @reservations.each do |r| %>
+<% if r.from>Date.today %>
+  <tbody>
+      <tr>
+        <td><%= r.name %></td>
+        <td><%= r.from %></td>
+        <td><%= r.to %></td>
+      </tr>
+  </tbody>
+<% end %>
+<% end %>
+</table>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Przeszłych rezerwacji tu nie pokazujemy :)</th>
+    </tr>
+  </thead>
+</table>
+<br>
+<%= form_tag reservations_path, method: "get" do %>
+<%= label_tag(:id, 'Poka swoją rezerwację:') %>
+<%= text_field_tag :id, params[:id] %>
+<%= submit_tag "Poka poka" %>
+<% end %>
+<br>
+<%= link_to 'Nowa rezerwacja', new_reservation_path, {:style => 'color: green'} %>

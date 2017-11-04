@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ID</strong> - potrzebne gdybyś chciał(a) kiedyś pozbyć się tej rezerwacji, może być i teraz :) Numer ten jest też widoczny w pasku adresu przeglądarki i całkiem możliwe, że dzięki temu go później łatwo znajdziesz:<br>
+  <%= @reservation.id %>
+</p>
+
+<p>
+  <strong>Opis:</strong><br>
+  <%= @reservation.name %>
+</p>
+
+<p>
+  <strong>Od:</strong><br>
+  <%= @reservation.from %>
+</p>
+
+<p>
+  <strong>Do:</strong><br>
+  <%= @reservation.to %>
+</p>
+
+<%= link_to 'Zniszcz to, co tu widać', @reservation, method: :delete, data: { confirm: 'Zgiń, przepadnij rezerwacjo nieczysta!'}  %> |
+<%= link_to 'Wstecz', reservations_path, method: :get %>
+

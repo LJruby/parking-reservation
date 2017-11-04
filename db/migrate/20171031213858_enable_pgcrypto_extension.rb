@@ -1,5 +1,5 @@
 class EnablePgcryptoExtension < ActiveRecord::Migration[5.1]
-  def create
+  def change
     enable_extension 'pgcrypto'
     create_table :reservations, id: :uuid do |t|
       t.text :name

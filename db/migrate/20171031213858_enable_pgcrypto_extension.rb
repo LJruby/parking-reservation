@@ -5,7 +5,6 @@ class EnablePgcryptoExtension < ActiveRecord::Migration[5.1]
       t.text :name
       t.date :from
       t.date :to
-      t.timestamps  
     end
   end
 end

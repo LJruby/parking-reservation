@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 20171031213858) do
     t.text "name"
     t.date "from"
     t.date "to"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

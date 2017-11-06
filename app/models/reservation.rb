@@ -1,6 +1,8 @@
 class Reservation < ApplicationRecord
   
-  validates :name, presence: {message: 'Zostaw coś po sobie, najlepiej imię, telefon, rodzaj i kolor autka :)'}
+  validates :name, 
+    presence: {message: 'Zostaw coś po sobie, najlepiej imię, telefon, rodzaj i kolor autka :)'},
+    uniqueness: {message: 'Taka rezerwacja już istnieje'}
   validate :from_to_validator
    
   def from_to_validator

@@ -5,8 +5,10 @@ class Reservation < ApplicationRecord
   validate :name_from_to_validator
    
   def name_from_to_validator
-    if to < from
-     errors.add(:to, 'Ucieszmy nasz formularz i zadbajmy o logiczny porządek dat :)')
+	if to < from
+	  errors.add(:to, 'Ucieszmy nasz formularz i zadbajmy o logiczny porządek dat :)')
+    elsif from < Date.today
+      errors.add(:from, 'Historię zostawmy historykom :)')
     else
       reserved_amount=0
       user_already_reserved=false
@@ -14,9 +16,7 @@ class Reservation < ApplicationRecord
         reserved_amount += 1 if (el.from..el.to).overlaps?(from..to)
         user_already_reserved=true if (el.name==name) && (el.from..el.to).overlaps?(from..to)
       end
-      if from < Date.today
-        errors.add(:from, 'Historię zostawmy historykom :)')
-      elsif reserved_amount>5
+      if reserved_amount>5
         errors.add(:from, 'W wybranym terminie parking niestety jest już zajęty :(')
       elsif user_already_reserved
         errors.add(:from, 'Ten użytkownik ma już rezerwację w tym terminie')
